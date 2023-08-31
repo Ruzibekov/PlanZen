@@ -1,6 +1,7 @@
 package uz.ruzibekov.planzen.ui.screens.block.create
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -14,24 +15,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreateBlockViewModel @Inject constructor(
-    val dao: BlockDao
+    private val dao: BlockDao
 ) : ViewModel() {
 
 
-    val scope = CoroutineScope(Dispatchers.IO)
+    private val scope = CoroutineScope(Dispatchers.IO)
 
     fun create() = scope.launch {
 
-        val color = Color(0xFF000000)
-
-        val tagEntity = TagEntity(
-            icon = R.drawable.ic_tag,
-            name = "Tag test",
-            color = color
-        )
-
         val entity = BlockEntity(
-            tag = tagEntity,
+            tagId = 0,
             startTimeInMillis = 1000L,
             endTimeInMillis = 2000L,
             description = "test description"

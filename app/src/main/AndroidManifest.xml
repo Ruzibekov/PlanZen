@@ -13,17 +13,27 @@
         android:name=".ui.core.App"
         android:theme="@style/Theme.PlanZen"
         tools:targetApi="31">
+
         <activity
             android:name=".ui.screens.main.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.PlanZen">
+
+        </activity>
+
+        <activity
+            android:name=".ui.screens.block.create.CreateBlockActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.PlanZen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>
