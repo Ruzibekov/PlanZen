@@ -10,7 +10,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import uz.ruzibekov.planzen.ui.screens.main.BottomNavItem
 import uz.ruzibekov.planzen.ui.screens.main._components.MainBottomNavigationView
-import uz.ruzibekov.planzen.ui.screens.main._components.MainTopBarView
 import uz.ruzibekov.planzen.ui.screens.main._fragments.ScheduleFragmentView
 import uz.ruzibekov.planzen.ui.screens.main._fragments.TagsFragmentView
 
@@ -21,11 +20,10 @@ object MainContentView {
     fun Default(navController: NavHostController) {
 
         Scaffold(
-            topBar = {
-                MainTopBarView.Default()
-            },
             bottomBar = {
-                MainBottomNavigationView.Default(navController = navController)
+                MainBottomNavigationView.Default(
+                    navController = navController
+                )
             }
         ) { paddingValues ->
 
