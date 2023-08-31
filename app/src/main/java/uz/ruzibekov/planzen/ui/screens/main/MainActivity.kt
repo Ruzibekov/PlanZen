@@ -10,16 +10,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import uz.ruzibekov.planzen.ui.screens.base.BaseActivity
 import uz.ruzibekov.planzen.ui.theme.PlanZenTheme
 
-class MainActivity : ComponentActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            PlanZenTheme {
+    override val content: @Composable () -> Unit = {
 
-            }
-        }
     }
+
+    override fun initialize() {}
 }
