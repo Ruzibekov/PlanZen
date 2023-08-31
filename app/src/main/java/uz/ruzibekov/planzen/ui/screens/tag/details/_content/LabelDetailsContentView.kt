@@ -1,4 +1,4 @@
-package uz.ruzibekov.planzen.ui.screens.label.details._content
+package uz.ruzibekov.planzen.ui.screens.tag.details._content
 
 import androidx.compose.runtime.Composable
 

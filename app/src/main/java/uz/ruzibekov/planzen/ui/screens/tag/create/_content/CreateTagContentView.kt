@@ -1,8 +1,8 @@
-package uz.ruzibekov.planzen.ui.screens.label.create._content
+package uz.ruzibekov.planzen.ui.screens.tag.create._content
 
 import androidx.compose.runtime.Composable
 
-object CreateLabelContentView {
+object CreateTagContentView {
 
     @Composable
     fun Default() {

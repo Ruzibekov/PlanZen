@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import uz.ruzibekov.planzen.ui.data.room.dao.BlockDao
+import uz.ruzibekov.planzen.ui.data.room.dao.TagDao
 import uz.ruzibekov.planzen.ui.data.room.database.AppDatabase
 
 @Module
@@ -22,4 +23,7 @@ object LocalModule {
 
     @Provides
     fun provideBlockDao(appDatabase: AppDatabase): BlockDao = appDatabase.blockDao()
+
+    @Provides
+    fun provideTagDao(appDatabase: AppDatabase): TagDao = appDatabase.tagDao()
 }

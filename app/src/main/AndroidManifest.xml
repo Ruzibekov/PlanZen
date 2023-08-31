@@ -26,6 +26,12 @@
             android:name=".ui.screens.block.create.CreateBlockActivity"
             android:exported="true"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.PlanZen"/>
+
+        <activity
+            android:name=".ui.screens.tag.create.CreateTagActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.PlanZen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
