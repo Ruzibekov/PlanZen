@@ -9,8 +9,8 @@ import uz.ruzibekov.planzen.data.model.BlockEntity
 interface BlockDao {
 
     @Insert
-    fun insert(entity: BlockEntity)
+    suspend fun insert(entity: BlockEntity)
 
     @Query("SELECT * FROM blocks")
-    fun getList(): List<BlockEntity>
+    suspend fun getList(): List<BlockEntity>
 }

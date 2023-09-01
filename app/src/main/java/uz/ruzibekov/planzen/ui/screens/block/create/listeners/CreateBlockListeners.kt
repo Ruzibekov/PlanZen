@@ -7,4 +7,8 @@ interface CreateBlockListeners {
     fun showTagsDialogView()
 
     fun openCreateNewTagScreen()
+
+    fun showTimePickerDialog()
+
+    fun hideTimePickerDialog()
 }

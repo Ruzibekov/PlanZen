@@ -9,9 +9,9 @@ import uz.ruzibekov.planzen.data.model.TagEntity
 interface TagDao {
 
     @Insert
-    fun insert(tagEntity: TagEntity)
+    suspend fun insert(tagEntity: TagEntity)
 
     @Query("SELECT * FROM tags")
-    fun getList(): List<TagEntity>
+    suspend fun getList(): List<TagEntity>
 
 }

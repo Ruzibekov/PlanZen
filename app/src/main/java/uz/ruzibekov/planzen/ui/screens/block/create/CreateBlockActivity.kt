@@ -2,13 +2,17 @@ package uz.ruzibekov.planzen.ui.screens.block.create
 
 import android.content.Intent
 import androidx.activity.viewModels
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.TimePickerState
 import androidx.compose.runtime.Composable
 import dagger.hilt.android.AndroidEntryPoint
 import uz.ruzibekov.planzen.ui.screens.base.BaseActivity
 import uz.ruzibekov.planzen.ui.screens.block.create._components.CreateBlockTagsDialogView
+import uz.ruzibekov.planzen.ui.screens.block.create._components.CreateBlockTimePickerView
 import uz.ruzibekov.planzen.ui.screens.block.create._content.CreateBlockContentView
 import uz.ruzibekov.planzen.ui.screens.block.create.listeners.CreateBlockListeners
 import uz.ruzibekov.planzen.ui.screens.tag.create.CreateTagActivity
+import java.util.Calendar
 
 @AndroidEntryPoint
 class CreateBlockActivity : BaseActivity(), CreateBlockListeners {
@@ -23,22 +27,41 @@ class CreateBlockActivity : BaseActivity(), CreateBlockListeners {
         )
 
         when {
+            viewModel.state.showTagsDialog.value ->
+                CreateBlockTagsDialogView.Default(state = viewModel.state, listeners = this)
 
-            viewModel.state.showTagsDialog.value -> {
-                CreateBlockTagsDialogView.Default(
-                    state = viewModel.state,
-                    listeners = this
-                )
-            }
+            viewModel.state.showTimePickerDialog.value ->
+                CreateBlockTimePickerView.Default(state = viewModel.state, listeners = this)
         }
     }
 
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun initialize() {
-        viewModel.create()
+        val calendar = Calendar.getInstance()
+
+        viewModel.state.startTimePickerState.value = TimePickerState(
+            initialHour = calendar[Calendar.HOUR_OF_DAY],
+            initialMinute = calendar[Calendar.MINUTE],
+            is24Hour = true
+        )
+
+        viewModel.state.endTimePickerState.value = TimePickerState(
+            initialHour = calendar[Calendar.HOUR_OF_DAY] + 1,
+            initialMinute = calendar[Calendar.MINUTE],
+            is24Hour = true
+        )
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        viewModel.fetch()
     }
 
     override fun createNewBlock() {
-//        TODO("Not yet implemented")
+        viewModel.createNewBlock {
+            finish()
+        }
     }
 
     override fun showTagsDialogView() {
@@ -48,6 +71,14 @@ class CreateBlockActivity : BaseActivity(), CreateBlockListeners {
     override fun openCreateNewTagScreen() {
         val intent = Intent(this, CreateTagActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun showTimePickerDialog() {
+        viewModel.state.showTimePickerDialog.value = true
+    }
+
+    override fun hideTimePickerDialog() {
+        viewModel.state.showTimePickerDialog.value = false
     }
 
 }

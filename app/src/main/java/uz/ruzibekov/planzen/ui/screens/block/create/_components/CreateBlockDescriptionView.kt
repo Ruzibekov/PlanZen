@@ -12,13 +12,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import uz.ruzibekov.planzen.R
+import uz.ruzibekov.planzen.ui.screens.block.create.state.CreateBlockState
 import uz.ruzibekov.planzen.ui.theme.AppColor
 
 object CreateBlockDescriptionView {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun Default() {
+    fun Default(state: CreateBlockState) {
 
         Surface(
             border = BorderStroke(width = 1.dp, color = AppColor.Gray),
@@ -26,8 +27,10 @@ object CreateBlockDescriptionView {
         ) {
 
             TextField(
-                value = "",
-                onValueChange = {},
+                value = state.description.value,
+                onValueChange = {
+                    state.description.value = it
+                },
                 placeholder = {
                     Text(text = stringResource(id = R.string.description))
                 },

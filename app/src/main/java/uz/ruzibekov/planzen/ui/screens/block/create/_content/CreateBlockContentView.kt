@@ -50,25 +50,37 @@ object CreateBlockContentView {
                 Spacer(modifier = Modifier.height(15.dp))
 
                 Row {
-                    CreateBlockTimeView.Default(
-                        titleRes = R.string.start
-                    )
+
+                    state.startTimePickerState.value?.let { startTimePickerState ->
+
+                        CreateBlockTimeView.Default(
+                            titleRes = R.string.start,
+                            timePickerState = startTimePickerState,
+                            listeners = listeners
+                        )
+                    }
 
                     Spacer(modifier = Modifier.width(10.dp))
 
-                    CreateBlockTimeView.Default(
-                        titleRes = R.string.start
-                    )
+                    state.endTimePickerState.value?.let { endTimePickerState ->
+
+                        CreateBlockTimeView.Default(
+                            titleRes = R.string.end,
+                            timePickerState = endTimePickerState,
+                            listeners = listeners
+                        )
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(15.dp))
 
-                CreateBlockDescriptionView.Default()
+                CreateBlockDescriptionView.Default(state)
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun Preview() {
@@ -79,6 +91,8 @@ fun Preview() {
         override fun createNewBlock() {}
         override fun showTagsDialogView() {}
         override fun openCreateNewTagScreen() {}
+        override fun showTimePickerDialog() {}
+        override fun hideTimePickerDialog() {}
     }
 
     CreateBlockContentView.Default(state, listeners)
