@@ -10,12 +10,15 @@ import kotlinx.coroutines.launch
 import uz.ruzibekov.planzen.R
 import uz.ruzibekov.planzen.data.model.TagEntity
 import uz.ruzibekov.planzen.data.room.dao.TagDao
+import uz.ruzibekov.planzen.ui.screens.tag.create.state.CreateTagState
 import javax.inject.Inject
 
 @HiltViewModel
 class CreateTagViewModel @Inject constructor(
     private val dao: TagDao
 ) : ViewModel() {
+
+    val state = CreateTagState()
 
     private val scope = CoroutineScope(Dispatchers.IO)
 

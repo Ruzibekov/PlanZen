@@ -56,8 +56,9 @@ object CreateBlockContentView {
                         CreateBlockTimeView.Default(
                             titleRes = R.string.start,
                             timePickerState = startTimePickerState,
-                            listeners = listeners
-                        )
+                        ){
+                            listeners.showStartTimePickerDialog()
+                        }
                     }
 
                     Spacer(modifier = Modifier.width(10.dp))
@@ -67,8 +68,9 @@ object CreateBlockContentView {
                         CreateBlockTimeView.Default(
                             titleRes = R.string.end,
                             timePickerState = endTimePickerState,
-                            listeners = listeners
-                        )
+                        ){
+                            listeners.showEndTimePickerDialog()
+                        }
                     }
                 }
 
@@ -91,8 +93,10 @@ fun Preview() {
         override fun createNewBlock() {}
         override fun showTagsDialogView() {}
         override fun openCreateNewTagScreen() {}
-        override fun showTimePickerDialog() {}
-        override fun hideTimePickerDialog() {}
+        override fun showStartTimePickerDialog() {}
+        override fun showEndTimePickerDialog() {}
+        override fun hideStartTimePickerDialog() {}
+        override fun hideEndTimePickerDialog() {}
     }
 
     CreateBlockContentView.Default(state, listeners)

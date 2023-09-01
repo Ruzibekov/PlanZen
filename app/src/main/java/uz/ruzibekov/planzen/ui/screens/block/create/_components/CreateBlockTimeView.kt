@@ -18,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import uz.ruzibekov.planzen.ui.screens.block.create.listeners.CreateBlockListeners
 import uz.ruzibekov.planzen.ui.theme.AppColor
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -31,7 +30,7 @@ object CreateBlockTimeView {
     fun Default(
         titleRes: Int,
         timePickerState: TimePickerState,
-        listeners: CreateBlockListeners
+        onClick: () -> Unit
     ) {
 
         Column {
@@ -46,7 +45,7 @@ object CreateBlockTimeView {
                     .height(50.dp),
                 border = BorderStroke(width = 1.dp, color = AppColor.Gray),
                 shape = RoundedCornerShape(8.dp),
-                onClick = { listeners.showTimePickerDialog() }
+                onClick = onClick
             ) {
 
                 Box(

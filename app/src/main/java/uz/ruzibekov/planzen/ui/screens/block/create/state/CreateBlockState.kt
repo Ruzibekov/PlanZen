@@ -10,7 +10,8 @@ import uz.ruzibekov.planzen.data.model.TagEntity
 
 data class CreateBlockState @OptIn(ExperimentalMaterial3Api::class) constructor(
     val showTagsDialog: MutableState<Boolean> = mutableStateOf(false),
-    val showTimePickerDialog: MutableState<Boolean> = mutableStateOf(false),
+    val showStartTimePickerDialog: MutableState<Boolean> = mutableStateOf(false),
+    val showEndTimePickerDialog: MutableState<Boolean> = mutableStateOf(false),
 
     val selectedTag: MutableState<TagEntity?> = mutableStateOf(null),
     val startTimePickerState: MutableState<TimePickerState?> = mutableStateOf(null),

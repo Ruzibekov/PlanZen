@@ -19,6 +19,7 @@ class CreateBlockActivity : BaseActivity(), CreateBlockListeners {
 
     private val viewModel: CreateBlockViewModel by viewModels()
 
+    @OptIn(ExperimentalMaterial3Api::class)
     override val content: @Composable () -> Unit = {
 
         CreateBlockContentView.Default(
@@ -30,8 +31,19 @@ class CreateBlockActivity : BaseActivity(), CreateBlockListeners {
             viewModel.state.showTagsDialog.value ->
                 CreateBlockTagsDialogView.Default(state = viewModel.state, listeners = this)
 
-            viewModel.state.showTimePickerDialog.value ->
-                CreateBlockTimePickerView.Default(state = viewModel.state, listeners = this)
+            viewModel.state.showStartTimePickerDialog.value ->
+                CreateBlockTimePickerView.Default(
+                    state = viewModel.state.startTimePickerState
+                ) {
+                    hideStartTimePickerDialog()
+                }
+
+            viewModel.state.showEndTimePickerDialog.value ->
+                CreateBlockTimePickerView.Default(
+                    state = viewModel.state.endTimePickerState
+                ) {
+                    hideEndTimePickerDialog()
+                }
         }
     }
 
@@ -54,7 +66,6 @@ class CreateBlockActivity : BaseActivity(), CreateBlockListeners {
 
     override fun onStart() {
         super.onStart()
-
         viewModel.fetch()
     }
 
@@ -73,12 +84,20 @@ class CreateBlockActivity : BaseActivity(), CreateBlockListeners {
         startActivity(intent)
     }
 
-    override fun showTimePickerDialog() {
-        viewModel.state.showTimePickerDialog.value = true
+    override fun showStartTimePickerDialog() {
+        viewModel.state.showStartTimePickerDialog.value = true
     }
 
-    override fun hideTimePickerDialog() {
-        viewModel.state.showTimePickerDialog.value = false
+    override fun showEndTimePickerDialog() {
+        viewModel.state.showEndTimePickerDialog.value = true
+    }
+
+    override fun hideStartTimePickerDialog() {
+        viewModel.state.showStartTimePickerDialog.value = false
+    }
+
+    override fun hideEndTimePickerDialog() {
+        viewModel.state.showEndTimePickerDialog.value = false
     }
 
 }

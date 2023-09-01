@@ -25,7 +25,10 @@ class MainActivity : BaseActivity(), MainListeners {
         )
     }
 
-    override fun initialize() {
+    override fun initialize() {}
+
+    override fun onStart() {
+        super.onStart()
         viewModel.fetch()
     }
 
