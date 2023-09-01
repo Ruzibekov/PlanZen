@@ -1,4 +1,4 @@
-package uz.ruzibekov.planzen.ui.data.model
+package uz.ruzibekov.planzen.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

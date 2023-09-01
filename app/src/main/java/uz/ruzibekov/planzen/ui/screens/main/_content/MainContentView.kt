@@ -10,14 +10,18 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import uz.ruzibekov.planzen.ui.screens.main.BottomNavItem
 import uz.ruzibekov.planzen.ui.screens.main._components.MainBottomNavigationView
-import uz.ruzibekov.planzen.ui.screens.main._fragments.ScheduleFragmentView
-import uz.ruzibekov.planzen.ui.screens.main._fragments.TagsFragmentView
+import uz.ruzibekov.planzen.ui.screens.main._fragments.schedule.ScheduleFragmentView
+import uz.ruzibekov.planzen.ui.screens.main._fragments.tags.TagsFragmentView
+import uz.ruzibekov.planzen.ui.screens.main.listeners.MainListeners
 
 object MainContentView {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun Default(navController: NavHostController) {
+    fun Default(
+        navController: NavHostController,
+        listeners: MainListeners
+    ) {
 
         Scaffold(
             bottomBar = {
@@ -25,6 +29,7 @@ object MainContentView {
                     navController = navController
                 )
             }
+
         ) { paddingValues ->
 
             NavHost(
@@ -34,7 +39,7 @@ object MainContentView {
             ) {
 
                 composable(BottomNavItem.Schedule.screen_route) {
-                    ScheduleFragmentView.Default()
+                    ScheduleFragmentView.Default(listeners = listeners)
                 }
 
                 composable(BottomNavItem.Tags.screen_route) {

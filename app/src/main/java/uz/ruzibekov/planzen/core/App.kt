@@ -1,4 +1,4 @@
-package uz.ruzibekov.planzen.ui.core
+package uz.ruzibekov.planzen.core
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -8,8 +8,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import uz.ruzibekov.planzen.R
-import uz.ruzibekov.planzen.ui.data.model.TagEntity
-import uz.ruzibekov.planzen.ui.data.room.dao.TagDao
+import uz.ruzibekov.planzen.data.model.TagEntity
+import uz.ruzibekov.planzen.data.room.dao.TagDao
 import javax.inject.Inject
 
 @HiltViewModel

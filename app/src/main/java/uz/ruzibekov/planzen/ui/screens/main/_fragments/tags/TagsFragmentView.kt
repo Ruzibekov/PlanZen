@@ -1,13 +1,13 @@
-package uz.ruzibekov.planzen.ui.screens.main._fragments
+package uz.ruzibekov.planzen.ui.screens.main._fragments.tags
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
-object ScheduleFragmentView {
+object TagsFragmentView {
 
     @Composable
     fun Default() {
-        
-        Text(text = "Schedule")
+
+        Text(text = "Tags")
     }
 }

@@ -1,16 +1,12 @@
 package uz.ruzibekov.planzen.ui.screens.block.create
 
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import uz.ruzibekov.planzen.R
-import uz.ruzibekov.planzen.ui.data.model.BlockEntity
-import uz.ruzibekov.planzen.ui.data.model.TagEntity
-import uz.ruzibekov.planzen.ui.data.room.dao.BlockDao
+import uz.ruzibekov.planzen.data.model.BlockEntity
+import uz.ruzibekov.planzen.data.room.dao.BlockDao
 import javax.inject.Inject
 
 @HiltViewModel

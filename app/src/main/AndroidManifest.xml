@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".ui.core.App"
+        android:name=".core.App"
         android:theme="@style/Theme.PlanZen"
         tools:targetApi="31">
 
@@ -19,7 +19,10 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.PlanZen">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -32,12 +35,7 @@
             android:name=".ui.screens.tag.create.CreateTagActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.PlanZen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.PlanZen" />
 
 
     </application>

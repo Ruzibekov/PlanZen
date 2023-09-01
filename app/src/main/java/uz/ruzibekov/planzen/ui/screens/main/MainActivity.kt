@@ -1,29 +1,35 @@
 package uz.ruzibekov.planzen.ui.screens.main
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import android.content.Intent
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import uz.ruzibekov.planzen.ui.screens.base.BaseActivity
+import uz.ruzibekov.planzen.ui.screens.block.create.CreateBlockActivity
 import uz.ruzibekov.planzen.ui.screens.main._content.MainContentView
-import uz.ruzibekov.planzen.ui.theme.PlanZenTheme
+import uz.ruzibekov.planzen.ui.screens.main.listeners.MainListeners
 
-class MainActivity : BaseActivity() {
+@AndroidEntryPoint
+class MainActivity : BaseActivity(), MainListeners {
 
-
+    private val viewModel: MainViewModel by viewModels()
 
     override val content: @Composable () -> Unit = {
-
         val navController = rememberNavController()
-        MainContentView.Default(navController)
+
+        MainContentView.Default(
+            navController = navController,
+            listeners = this
+        )
     }
 
-    override fun initialize() {}
+    override fun initialize() {
+        viewModel.fetch()
+    }
+
+    override fun openCreateBlockScreen() {
+        val intent = Intent(this, CreateBlockActivity::class.java)
+        startActivity(intent)
+    }
 }
