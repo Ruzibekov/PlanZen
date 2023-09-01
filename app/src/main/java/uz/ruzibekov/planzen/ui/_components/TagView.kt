@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -19,12 +20,14 @@ import uz.ruzibekov.planzen.ui.theme.AppColor
 
 object TagView {
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun Default(tag: TagEntity) {
+    fun Default(tag: TagEntity, onClick: (TagEntity) -> Unit) {
 
         Surface(
             shape = RoundedCornerShape(100.dp),
-            color = Color(tag.argb)
+            color = Color(tag.argb),
+            onClick = { onClick(tag) }
         ) {
 
             Row(modifier = Modifier.padding(5.dp)) {

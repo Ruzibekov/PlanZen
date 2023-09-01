@@ -43,7 +43,7 @@ object ScheduleItemView {
                         name = "Training",
                         argb = AppColor.Gray.toArgb()
                     )
-                )
+                ){}
 
                 Spacer(modifier = Modifier.height(5.dp))
 

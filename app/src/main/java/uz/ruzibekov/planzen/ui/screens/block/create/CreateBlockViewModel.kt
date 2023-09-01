@@ -7,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import uz.ruzibekov.planzen.data.model.BlockEntity
 import uz.ruzibekov.planzen.data.room.dao.BlockDao
+import uz.ruzibekov.planzen.ui.screens.block.create.state.CreateBlockState
 import javax.inject.Inject
 
 @HiltViewModel
@@ -14,6 +15,7 @@ class CreateBlockViewModel @Inject constructor(
     private val dao: BlockDao
 ) : ViewModel() {
 
+    val state = CreateBlockState()
 
     private val scope = CoroutineScope(Dispatchers.IO)
 

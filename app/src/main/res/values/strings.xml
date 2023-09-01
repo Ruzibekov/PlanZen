@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">PlanZen</string>
     <string name="schedule">Расписание</string>
+    <string name="new_block">Новый блок</string>
+    <string name="start">Начало</string>
+    <string name="description">Описание</string>
+    <string name="tags">Метки</string>
+    <string name="new_tag">Новая метка</string>
 </resources>

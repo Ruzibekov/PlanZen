@@ -14,4 +14,5 @@ val Pink40 = Color(0xFF7D5260)
 object AppColor {
     val Gray = Color(0xFF808080)
     val White = Color(0xFFFFFFFF)
+    val Black = Color(0xFF000000)
 }
