@@ -11,17 +11,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
-import uz.ruzibekov.planzen.R
-import uz.ruzibekov.planzen.data.model.TagEntity
-import uz.ruzibekov.planzen.ui._components.TagView
+import uz.ruzibekov.planzen.data.model.BlockEntity
 import uz.ruzibekov.planzen.ui.theme.AppColor
 
 object ScheduleItemView {
 
     @Composable
-    fun Default() {
+    fun Default(entity: BlockEntity, /*tag: TagEntity*/) {
 
         Surface(
             modifier = Modifier
@@ -37,17 +34,11 @@ object ScheduleItemView {
                     .padding(10.dp)
             ) {
 
-                TagView.Default(
-                    tag = TagEntity(
-                        icon = R.drawable.ic_tag,
-                        name = "Training",
-                        argb = AppColor.Gray.toArgb()
-                    )
-                ){}
+//                TagView.Default(tag){}
 
                 Spacer(modifier = Modifier.height(5.dp))
 
-                Text(text = "Training")
+                Text(text = entity.description)
 
                 Text(text = "1 hours")
             }

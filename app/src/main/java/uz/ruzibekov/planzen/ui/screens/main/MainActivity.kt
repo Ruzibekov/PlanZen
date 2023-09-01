@@ -20,6 +20,7 @@ class MainActivity : BaseActivity(), MainListeners {
 
         MainContentView.Default(
             navController = navController,
+            state = viewModel.state,
             listeners = this
         )
     }

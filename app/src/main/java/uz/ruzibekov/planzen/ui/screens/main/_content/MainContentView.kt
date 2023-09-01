@@ -1,7 +1,6 @@
 package uz.ruzibekov.planzen.ui.screens.main._content
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,12 +12,13 @@ import uz.ruzibekov.planzen.ui.screens.main._components.MainBottomNavigationView
 import uz.ruzibekov.planzen.ui.screens.main._fragments.schedule.ScheduleFragmentView
 import uz.ruzibekov.planzen.ui.screens.main._fragments.tags.TagsFragmentView
 import uz.ruzibekov.planzen.ui.screens.main.listeners.MainListeners
+import uz.ruzibekov.planzen.ui.screens.main.state.MainState
 
 object MainContentView {
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun Default(
+        state: MainState,
         navController: NavHostController,
         listeners: MainListeners
     ) {
@@ -39,7 +39,7 @@ object MainContentView {
             ) {
 
                 composable(BottomNavItem.Schedule.screen_route) {
-                    ScheduleFragmentView.Default(listeners = listeners)
+                    ScheduleFragmentView.Default(state = state, listeners = listeners)
                 }
 
                 composable(BottomNavItem.Tags.screen_route) {

@@ -7,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import uz.ruzibekov.planzen.data.room.dao.BlockDao
 import uz.ruzibekov.planzen.data.room.dao.TagDao
+import uz.ruzibekov.planzen.ui.screens.main.state.MainState
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,10 +16,16 @@ class MainViewModel @Inject constructor(
     private val tagDao: TagDao,
 ) : ViewModel() {
 
+    val state = MainState()
+
     private val scope = CoroutineScope(Dispatchers.IO)
 
     fun fetch() = scope.launch {
-        blockDao.getList().size
-        tagDao.getList().size
+
+        state.blocks.clear()
+        state.blocks.addAll(blockDao.getList())
+
+        state.tags.clear()
+        state.tags.addAll(tagDao.getList())
     }
 }

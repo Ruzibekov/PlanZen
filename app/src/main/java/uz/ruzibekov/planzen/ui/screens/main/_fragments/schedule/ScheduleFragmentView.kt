@@ -2,7 +2,7 @@ package uz.ruzibekov.planzen.ui.screens.main._fragments.schedule
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -11,12 +11,12 @@ import uz.ruzibekov.planzen.ui.screens.main._fragments.schedule._components.Sche
 import uz.ruzibekov.planzen.ui.screens.main._fragments.schedule._components.ScheduleItemView
 import uz.ruzibekov.planzen.ui.screens.main._fragments.schedule._components.ScheduleTopBarView
 import uz.ruzibekov.planzen.ui.screens.main.listeners.MainListeners
+import uz.ruzibekov.planzen.ui.screens.main.state.MainState
 
 object ScheduleFragmentView {
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun Default(listeners: MainListeners) {
+    fun Default(state: MainState, listeners: MainListeners) {
 
         Scaffold(
             topBar = {
@@ -31,9 +31,12 @@ object ScheduleFragmentView {
 
             LazyColumn(modifier = Modifier.padding(paddingValues)) {
 
-                items(15) {
+                items(state.blocks) { block ->
 
-                    ScheduleItemView.Default()
+                    ScheduleItemView.Default(
+                        entity = block,
+//                        tag = state.tags.first { it.id == block.tagId }
+                    )
                 }
             }
         }
@@ -44,9 +47,11 @@ object ScheduleFragmentView {
 @Composable
 fun Preview() {
 
-    val listeners = object : MainListeners{
+    val state = MainState()
+
+    val listeners = object : MainListeners {
         override fun openCreateBlockScreen() {}
     }
 
-    ScheduleFragmentView.Default(listeners)
+    ScheduleFragmentView.Default(state, listeners)
 }
