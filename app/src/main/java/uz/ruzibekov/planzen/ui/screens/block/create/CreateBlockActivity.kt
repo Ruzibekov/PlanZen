@@ -100,4 +100,8 @@ class CreateBlockActivity : BaseActivity(), CreateBlockListeners {
         viewModel.state.showEndTimePickerDialog.value = false
     }
 
+    override fun onBackStack() {
+        finish()
+    }
+
 }

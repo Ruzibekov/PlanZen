@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import uz.ruzibekov.planzen.R
-import uz.ruzibekov.planzen.ui.screens.block.create.listeners.CreateBlockListeners
 import uz.ruzibekov.planzen.ui.screens.tag.create.listeners.CreateTagListeners
 
 object CreateTagTopBarView {
@@ -24,10 +23,15 @@ object CreateTagTopBarView {
             },
 
             navigationIcon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_back),
-                    contentDescription = "back icon"
-                )
+                IconButton(
+                    onClick = { listeners.onBackStack() }
+                ) {
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_back),
+                        contentDescription = "back icon"
+                    )
+                }
             },
 
             actions = {

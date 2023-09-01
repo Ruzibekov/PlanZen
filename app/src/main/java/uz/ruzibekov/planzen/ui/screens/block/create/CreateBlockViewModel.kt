@@ -10,7 +10,7 @@ import uz.ruzibekov.planzen.data.model.BlockEntity
 import uz.ruzibekov.planzen.data.room.dao.BlockDao
 import uz.ruzibekov.planzen.data.room.dao.TagDao
 import uz.ruzibekov.planzen.ui.screens.block.create.state.CreateBlockState
-import java.util.Calendar
+import uz.ruzibekov.planzen.utils.DateFactory
 import javax.inject.Inject
 
 @HiltViewModel
@@ -29,48 +29,17 @@ class CreateBlockViewModel @Inject constructor(
         state.tags.addAll(tagDao.getList())
     }
 
-    fun create() = scope.launch {
-
-        val entity = BlockEntity(
-            tagId = 0,
-            startTimeInMillis = 1000L,
-            endTimeInMillis = 2000L,
-            description = "test description"
-        )
-
-        blockDao.insert(entity)
-    }
-
     @OptIn(ExperimentalMaterial3Api::class)
     fun createNewBlock(onSuccess: () -> Unit) = scope.launch {
-        if (state.selectedTag.value != null) {
+        if (state.selectedTag.value != null && state.startTimePickerState.value != null && state.endTimePickerState.value != null) {
 
-            val startCalendar = Calendar.getInstance().apply {
-
-                val timeState = state.startTimePickerState.value!!
-
-                set(
-                    Calendar.HOUR_OF_DAY,
-                    timeState.hour,
-                    timeState.minute
-                )
-            }
-
-            val endCalendar = Calendar.getInstance().apply {
-
-                val timeState = state.endTimePickerState.value!!
-
-                set(
-                    Calendar.HOUR_OF_DAY,
-                    timeState.hour,
-                    timeState.minute
-                )
-            }
+            val startTime = DateFactory.getTimeInMillis(state.startTimePickerState.value!!)
+            val endTime = DateFactory.getTimeInMillis(state.endTimePickerState.value!!)
 
             val entity = BlockEntity(
-                tagId = state.selectedTag.value!!.id,
-                startTimeInMillis = startCalendar.timeInMillis,
-                endTimeInMillis = endCalendar.timeInMillis,
+                tag = state.selectedTag.value!!,
+                startTimeInMillis = startTime,
+                endTimeInMillis = endTime,
                 description = state.description.value
             )
 

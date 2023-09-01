@@ -16,7 +16,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import uz.ruzibekov.planzen.R
 import uz.ruzibekov.planzen.ui.screens.tag.create._components.CreateTagNameView
@@ -51,25 +50,34 @@ object CreateTagContentView {
 
                     Item(
                         icon = R.drawable.ic_palette,
-                        containerColor = AppColor.Black
-                    )
+                        containerColor = state.color.value ?: AppColor.Gray
+                    ) {
+                        listeners.showColorsDialog()
+                    }
 
                     Spacer(modifier = Modifier.width(20.dp))
 
                     Item(
-                        icon = R.drawable.ic_palette,
-                        containerColor = AppColor.Black
-                    )
+                        icon = state.icon.value ?: R.drawable.ic_emoji,
+                        containerColor = state.color.value ?: AppColor.Gray
+                    ) {
+                        listeners.showIconsDialog()
+                    }
                 }
             }
         }
     }
 
     @Composable
-    private fun Item(icon: Int, containerColor: Color) {
+    private fun Item(
+        icon: Int,
+        containerColor: Color,
+        onClick: () -> Unit
+    ) {
         Surface(
             shape = CircleShape,
-            color = containerColor
+            color = containerColor,
+            onClick = onClick
         ) {
 
             Icon(
@@ -82,14 +90,4 @@ object CreateTagContentView {
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Preview() {
-    val state = CreateTagState()
-    val listeners = object : CreateTagListeners {
-        override fun createNewTag() {}
-    }
-    CreateTagContentView.Default(state = state, listeners = listeners)
 }

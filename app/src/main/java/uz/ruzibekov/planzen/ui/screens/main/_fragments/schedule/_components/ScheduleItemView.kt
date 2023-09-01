@@ -1,6 +1,8 @@
 package uz.ruzibekov.planzen.ui.screens.main._fragments.schedule._components
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,35 +15,50 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import uz.ruzibekov.planzen.data.model.BlockEntity
+import uz.ruzibekov.planzen.ui._components.TagView
 import uz.ruzibekov.planzen.ui.theme.AppColor
+import uz.ruzibekov.planzen.utils.DateFactory
 
 object ScheduleItemView {
 
     @Composable
-    fun Default(entity: BlockEntity, /*tag: TagEntity*/) {
+    fun Default(entity: BlockEntity) {
 
-        Surface(
+        Log.i("RRR", "item = $entity")
+
+        Column(
             modifier = Modifier
                 .padding(horizontal = 20.dp)
                 .padding(bottom = 8.dp),
-            border = BorderStroke(1.dp, AppColor.Gray),
-            shape = RoundedCornerShape(8.dp)
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
 
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp)
+            Text(text = DateFactory.getFormattedTime(entity.startTimeInMillis))
+
+            Surface(
+                modifier = Modifier.padding(start = 60.dp),
+                border = BorderStroke(1.dp, AppColor.Gray),
+                shape = RoundedCornerShape(8.dp)
             ) {
 
-//                TagView.Default(tag){}
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp)
+                ) {
 
-                Spacer(modifier = Modifier.height(5.dp))
+                    TagView.Default(tag = entity.tag)
 
-                Text(text = entity.description)
+                    if (entity.description.isNotBlank()) {
 
-                Text(text = "1 hours")
+                        Spacer(modifier = Modifier.height(5.dp))
+
+                        Text(text = entity.description)
+                    }
+                }
             }
+
+            Text(text = DateFactory.getFormattedTime(entity.endTimeInMillis))
         }
     }
 }

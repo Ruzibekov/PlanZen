@@ -23,10 +23,17 @@ object CreateBlockTopBarView {
             },
 
             navigationIcon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_back),
-                    contentDescription = "back icon"
-                )
+                IconButton(
+                    onClick = {
+                        listeners.onBackStack()
+                    }
+                ) {
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_back),
+                        contentDescription = "back icon"
+                    )
+                }
             },
 
             actions = {

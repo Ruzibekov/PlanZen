@@ -1,6 +1,7 @@
 package uz.ruzibekov.planzen.ui.screens.block.create._components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
@@ -8,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -31,6 +33,7 @@ object CreateBlockDescriptionView {
                 onValueChange = {
                     state.description.value = it
                 },
+                modifier = Modifier.fillMaxWidth(),
                 placeholder = {
                     Text(text = stringResource(id = R.string.description))
                 },

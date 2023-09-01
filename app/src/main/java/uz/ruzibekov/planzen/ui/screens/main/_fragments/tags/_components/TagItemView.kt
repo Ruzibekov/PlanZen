@@ -1,4 +1,4 @@
-package uz.ruzibekov.planzen.ui._components
+package uz.ruzibekov.planzen.ui.screens.main._fragments.tags._components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,15 +15,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import uz.ruzibekov.planzen.data.model.TagEntity
 import uz.ruzibekov.planzen.ui.theme.AppColor
 
-object TagView {
+object TagItemView {
 
     @Composable
     fun Default(tag: TagEntity, onClick: ((TagEntity) -> Unit)? = null) {
 
         Surface(
+            modifier = Modifier.padding(bottom = 8.dp),
             shape = RoundedCornerShape(100.dp),
             color = Color(tag.argb),
             onClick = { onClick?.invoke(tag) }
@@ -37,7 +39,7 @@ object TagView {
                 Icon(
                     painter = painterResource(id = tag.icon),
                     contentDescription = "icon",
-                    modifier = Modifier.size(16.dp),
+                    modifier = Modifier.size(24.dp),
                     tint = AppColor.White
                 )
 
@@ -45,7 +47,8 @@ object TagView {
 
                 Text(
                     text = tag.name,
-                    color = AppColor.White
+                    color = AppColor.White,
+                    fontSize = 16.sp
                 )
             }
         }

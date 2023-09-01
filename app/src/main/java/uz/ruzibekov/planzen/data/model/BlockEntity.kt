@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class BlockEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val tagId: Long,
+    val tag: TagEntity,
     val startTimeInMillis: Long,
     val endTimeInMillis: Long,
     val description: String

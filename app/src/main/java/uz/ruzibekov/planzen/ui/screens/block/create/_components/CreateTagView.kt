@@ -4,9 +4,9 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -22,9 +22,8 @@ import uz.ruzibekov.planzen.ui.screens.block.create.listeners.CreateBlockListene
 import uz.ruzibekov.planzen.ui.screens.block.create.state.CreateBlockState
 import uz.ruzibekov.planzen.ui.theme.AppColor
 
-object CreateBlockTagView {
+object CreateTagView {
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun Default(
         state: CreateBlockState,
@@ -48,13 +47,14 @@ object CreateBlockTagView {
                 Icon(
                     painter = painterResource(id = tag?.icon ?: R.drawable.ic_add),
                     contentDescription = "add icon",
+                    modifier = Modifier.size(24.dp),
                     tint = if (tag == null) AppColor.Black else AppColor.White
                 )
 
                 Spacer(modifier = Modifier.width(5.dp))
 
                 Text(
-                    text = tag?.name ?: stringResource(R.string.start),
+                    text = tag?.name ?: stringResource(R.string.new_tag),
                     color = if (tag == null) AppColor.Black else AppColor.White
                 )
             }

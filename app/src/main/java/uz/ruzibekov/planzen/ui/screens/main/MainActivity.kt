@@ -9,6 +9,7 @@ import uz.ruzibekov.planzen.ui.screens.base.BaseActivity
 import uz.ruzibekov.planzen.ui.screens.block.create.CreateBlockActivity
 import uz.ruzibekov.planzen.ui.screens.main._content.MainContentView
 import uz.ruzibekov.planzen.ui.screens.main.listeners.MainListeners
+import uz.ruzibekov.planzen.ui.screens.tag.create.CreateTagActivity
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity(), MainListeners {
@@ -34,6 +35,11 @@ class MainActivity : BaseActivity(), MainListeners {
 
     override fun openCreateBlockScreen() {
         val intent = Intent(this, CreateBlockActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun openCreateTagScreen() {
+        val intent = Intent(this, CreateTagActivity::class.java)
         startActivity(intent)
     }
 }

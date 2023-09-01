@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">PlanZen</string>
     <string name="schedule">Расписание</string>
+    <string name="schedule_is_empty">Расписание пусто</string>
     <string name="new_block">Новый блок</string>
     <string name="start">Начало</string>
     <string name="end">Конец</string>

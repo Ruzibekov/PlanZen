@@ -9,8 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import uz.ruzibekov.planzen.ui.screens.main.BottomNavItem
 import uz.ruzibekov.planzen.ui.screens.main._components.MainBottomNavigationView
-import uz.ruzibekov.planzen.ui.screens.main._fragments.schedule.ScheduleFragmentView
-import uz.ruzibekov.planzen.ui.screens.main._fragments.tags.TagsFragmentView
+import uz.ruzibekov.planzen.ui.screens.main._fragments.schedule._content.ScheduleFragmentView
+import uz.ruzibekov.planzen.ui.screens.main._fragments.tags._content.TagsFragmentView
 import uz.ruzibekov.planzen.ui.screens.main.listeners.MainListeners
 import uz.ruzibekov.planzen.ui.screens.main.state.MainState
 
@@ -43,7 +43,7 @@ object MainContentView {
                 }
 
                 composable(BottomNavItem.Tags.screen_route) {
-                    TagsFragmentView.Default()
+                    TagsFragmentView.Default(state = state, listeners = listeners)
                 }
             }
         }

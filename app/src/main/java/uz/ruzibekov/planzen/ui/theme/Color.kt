@@ -12,7 +12,21 @@ val Pink40 = Color(0xFF7D5260)
 
 
 object AppColor {
+
+    val Primary = Color(0xFF5a79ba)
+
     val Gray = Color(0xFF808080)
     val White = Color(0xFFFFFFFF)
     val Black = Color(0xFF000000)
+    val Red = Color(0xFFFF0000)
+    val Green = Color(0xFF00FF00)
+    val Blue = Color(0xFF0000FF)
+    val Orange = Color(0xFFFA8B00)
+    val DarkOrange = Color(0xFFEE6C00)
+    val Broken = Color(0xFF8C6E63)
+    val Purple = Color(0xFF9B27AF)
+
+    fun getTagColors(): List<Color> {
+        return listOf(Black, Red, Green, Blue)
+    }
 }
